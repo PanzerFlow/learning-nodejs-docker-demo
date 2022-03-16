@@ -9,11 +9,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Docker logion
-        env:
-          DOCKER_USER: ${{secrets.DOCKER_USER}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Docker build images for nodejs project
       run: docker build . -f Dockerfile --tag andi93007/nodejs-github-cation-wcd-c3-demo:latest
     - name: Docker push to andi93007 dockerhub account
